@@ -1,0 +1,131 @@
+*{
+    margin:0;
+    padding:0;
+    text-decoration: none;
+}
+.container{
+    display:flex;
+}
+.navbar{
+    background-color: #343a40;
+
+
+}
+.dashName{
+    color:black;
+    margin-left: 450px;
+    margin-top: 50px;
+    font-size: 30px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.custom-container {
+    max-width: 100%;
+  }
+  .ticketName{
+    margin-top: 30px;
+    font-size: 25px;
+}
+
+main{
+    width: 100%;
+    padding: 20px;
+}
+.sidebar{
+    background: #CF1F46;
+    color: #fff;
+    height: 130vh;
+    width: 200px;
+    transition: all 0.5s;
+}
+.top_section{
+    display: flex;
+    align-items:center;
+    padding:20px 15px;
+}
+.logo{
+    font-size: 30px;
+
+}
+.bars{
+    display: flex;
+    font-size: 25px;
+    margin-left: 50px;
+}
+.link{
+    display: flex;
+    color: #fff;
+    padding: 10px 15px;
+    gap: 15px;
+    transition: all 0.5s;
+}
+.link:hover{
+    background:rgb(255, 255, 255);
+    color: #000;
+    transition: all 0.5s;
+}
+.active{
+    background: rgb(0, 0, 0);
+    color: #ffffff;
+}
+.icon, .link_text{
+    font-size: 20px;
+}
+.sidebar {
+    background-color: #25064e;
+}
+h4 {
+  font-size: 24px;
+}
+.dashboard-chart-card {
+    width: 400px;
+    height: 200px;
+  }
+  .dashboard-table {
+    width: 500px;
+    margin-left: 50px;
+    
+  }
+  
+  
+.ant-card {
+    width: 300px;
+    height:150px;
+  }
+  h4 {
+    font-size: 24px;
+  }
+  
+
+.link {
+    color: #fff;
+}
+
+.active .link_text {
+    color: #fff;
+}
+
+.icon {
+    color: #fff;
+}
+
+.bars {
+    color: #fff;
+}
+
+.logo {
+    color: #fff;
+}
+.link_text {
+    color: #fff;
+}
+.navbar-full {
+    width: 100%;
+  }
+  
+  .back{
+    margin-left: 350px;
+    
+}
+.cercle{
+    margin-right: 100px;
+}
