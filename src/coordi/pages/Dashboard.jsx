@@ -7,7 +7,7 @@ import {
   import { Card, Space, Statistic, Table, Typography } from "antd";
   import { useEffect, useState } from "react";
   import {  Tag } from 'antd';
-
+  import { getReclam, getEquipment, getClient, getTechnicien } from "../../components/API";
   import {
     Chart as ChartJS,
     CategoryScale,
@@ -30,12 +30,25 @@ import {
   );
   
   function Dashboard() {
-    const [orders, setOrders] = useState(0);
-    const [inventory, setInventory] = useState(0);
-    const [customers, setCustomers] = useState(0);
-    const [revenue, setRevenue] = useState(0);
+    const [technicien, setTechnicien] = useState(0); //manquante en backend 
+    const [client, setClient] = useState(0);
+    const [reclams, setReclam] = useState(0);
+    const [equipement, setEquipment] = useState(0);
   
-   
+    useEffect(() => {
+      getReclam().then((res) => {
+        setReclam(res);
+        console.log(res);
+      });
+      getEquipment().then((res) => {
+        setEquipment(res);
+        console.log(res);
+      });
+      getClient().then((res) => {
+        setClient(res);
+        console.log(res);
+      });
+    }, []);
   
     return (
       <Space size={20} direction="vertical" className="container p-5 text-center">
@@ -54,7 +67,7 @@ import {
       />
     }
     title={"Réclamation"}
-    value={orders}
+    value={reclams}
   />
   <DashboardCard
     icon={
@@ -69,7 +82,7 @@ import {
       />
     }
     title={"Technicien"}
-    value={inventory}
+    value={technicien}
   />
   <DashboardCard
     icon={
@@ -84,7 +97,7 @@ import {
       />
     }
     title={"Client"}
-    value={customers}
+    value={client}
   />
   <DashboardCard
     icon={
@@ -99,7 +112,7 @@ import {
       />
     }
     title={"Equipement"}
-    value={revenue}
+    value={equipement}
   />
         </Space>
         <Space>
