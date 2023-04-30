@@ -134,19 +134,15 @@ import {
     );
   }
   function RecentOrders() {
-    const [dataSource, setDataSource] = useState([
-      { key: 1, client: "Client 1", technicien: "Technicien 1", etat: "En cours" },
-      { key: 2, client: "Client 2", technicien: "Technicien 2", etat: "Planifié" },
-      { key: 3, client: "Client 3", technicien: "Technicien 3", etat: "Clôturé" },
-    ]);
+    const [dataSource, setDataSource] = useState([]);
     const [loading, setLoading] = useState(false);
   
     useEffect(() => {
       setLoading(true);
-      // getOrders().then((res) => {
-      //   setDataSource(res.products.splice(0, 3));
-      //   setLoading(false);
-      // });
+      getClient().then((res) => {
+        setDataSource(res.client.splice(0, 3));
+        setLoading(false);
+      });
       setLoading(false); // On désactive le chargement après 1 seconde
     }, []);
   
@@ -156,35 +152,17 @@ import {
         dataIndex: "client",
       },
       {
-        title: "Technicien",
+        title: "Numéro de réclamations traitées",
         dataIndex: "technicien",
       },
       {
-        title: "État",
+        title: "Détails",
         dataIndex: "etat",
-        render: (text) => {
-          let color;
-          switch (text) {
-            case "En cours":
-              color = "red";
-              break;
-            case "Planifié":
-              color = "yellow";
-              break;
-            case "Clôturé":
-              color = "green";
-              break;
-            default:
-              color = "gray";
-          }
-          return <Tag color={color}>{text}</Tag>;
-        },
       },
     ];
   
     return (
       <>
-        <Typography.Text>Progression d'intervention</Typography.Text>
         <Table
           className="dashboard-table"
           columns={columns}

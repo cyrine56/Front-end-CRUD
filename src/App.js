@@ -17,8 +17,8 @@ import Sidebar2 from './manager/Sidebar2'
 import Alertes from './manager/pages/Alertes'
 import Report from './manager/pages/Report'
 import  Navbarr from './technicien/Navbarr'
-import Tab from './technicien/Tab'
-import Prog from './technicien/Prog'
+import Tab from './technicien/Tab';
+import Addclient from './coordi/pages/client/Addclient';
 const App = () => {
   return (
     <BrowserRouter>
@@ -57,6 +57,7 @@ const CoordRoutes = () => {
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/client" element={<Clients />} />
+          <Route exact path="/addclient" element={<Addclient/>} />
           <Route path="/rapports" element={<Report />} />
           <Route path="/equipement" element={<Equipement />} />
           <Route exact path="/addequ" element={<AddEquipement />} />

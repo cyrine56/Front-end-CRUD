@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 export default function Home() {
@@ -14,12 +16,12 @@ export default function Home() {
   }, []);
 
   const loadUsers = async () => {
-    const result = await axios.get("http://localhost:8080/clients");
+    const result = await axios.get("http://localhost:8080/customs");
     setUsers(result.data);
   };
 
   const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:8080/client/${id}`);
+    await axios.delete(`http://localhost:8080/customs/${id}`);
     loadUsers();
   };
 
@@ -27,11 +29,11 @@ export default function Home() {
     <div >
                 <h1 className="text-center">Clients</h1>
 
-                <Link className="btn btn-outline-dark m-2" to="/coord/addequ">
+                <Link className="btn btn-outline-dark m-2" to="/coord/addclient">
             Ajouter nouveau Client
           </Link>
       <div >
-        <table className="table table-xss border shadow small mt-5">
+        <table className="table table-xss border shadow small mt-5 ">
           <thead>
             <tr>
               <th scope="col">client</th>
@@ -46,30 +48,23 @@ export default function Home() {
               <tr>
                
 
-                <td>{Client.client}</td>
+                <td>{Client.nom}</td>
                 <td>{Client.adresse}</td>
                 <td>{Client.contact}</td>
                 <td>{Client.telephone}</td>
                
                 <td>
-                  <Link
-                    className="btn btn-primary mt-2"
-                    to={`/dash/viewequ${Client.id}`}
-                  >
-                    Voir
-                  </Link>
-                  <Link
-                    className="btn btn-outline-primary mt-2"
-                    to={`/dash/editequ`}
-                  >
-                    Editer
-                  </Link>
-                  <button
-                    className="btn btn-danger mt-2"
-                    onClick={() => deleteUser(Client.id)}
-                  >
-                    Supprimer
-                  </button>
+            
+                <button className="btn btn-success m-2" onClick={() => deleteUser(Client.id)}>
+  <FontAwesomeIcon icon={faEdit} className="text-white" />
+</button>
+
+
+                  <button className="btn btn-danger m-2 " onClick={() => deleteUser(Client.id)}>
+  <FontAwesomeIcon icon={faTrashAlt} className="text-white" />
+</button>
+
+
                 </td>
               </tr>
             ))}
