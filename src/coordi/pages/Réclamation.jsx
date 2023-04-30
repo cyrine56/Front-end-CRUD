@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
   const [reclams, setReclams] = useState([]);
@@ -40,6 +41,7 @@ export default function Home() {
               <th scope="col">heure</th>
               <th scope="col">affecté à </th>
               <th scope="col">type panne</th>
+              <th scope="col">état</th>
               
 
 
@@ -54,25 +56,18 @@ export default function Home() {
                 <td>12h</td>
                 <td>Ahmed</td>
                 <td></td>
+                <td>Cloturés</td>
+
                 <td>
-                  <Link
-                    className="btn btn-primary mt-2"
-                    to={`/dash/vieweinterv`}
-                  >
-                    Voir
-                  </Link>
-                  <Link
-                    className="btn btn-outline-primary mt-2"
-                    to={`/dash/editinterv`}
-                  >
-                    Editer
-                  </Link>
-                  <button
-                    className="btn btn-danger mt-2"
-                    
-                  >
-                    Supprimer
-                  </button>
+
+                <button className="btn btn-success m-2" onClick={() => deleteReclam(reclams.id)}>
+  <FontAwesomeIcon icon={faEdit} className="text-white" />
+</button>
+
+
+                  <button className="btn btn-danger m-2 " onClick={() => deleteReclam(reclams.id)}>
+  <FontAwesomeIcon icon={faTrashAlt} className="text-white" />
+</button>
                 </td>
               </tr>
           </tbody>

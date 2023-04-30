@@ -17,8 +17,12 @@ import Sidebar2 from './manager/Sidebar2'
 import Alertes from './manager/pages/Alertes'
 import Report from './manager/pages/Report'
 import  Navbarr from './technicien/Navbarr'
+import Intervention from './coordi/pages/Intervention'
 import Tab from './technicien/Tab';
 import Addclient from './coordi/pages/client/Addclient';
+import Réclamation from './coordi/pages/Réclamation'
+import Addtech from './coordi/pages/technicien/addtech'
+import AddIntervention from './coordi/pages/Interv/AddIntervention'
 const App = () => {
   return (
     <BrowserRouter>
@@ -62,8 +66,12 @@ const CoordRoutes = () => {
           <Route path="/equipement" element={<Equipement />} />
           <Route exact path="/addequ" element={<AddEquipement />} />
           <Route exact path="/editequ" element={<EditEquipement />} />
-          <Route path="/reclamation" element={<Reclamation />} />
+          <Route path="/interv" element={<Intervention />} />
+          <Route exact path="/addinterv" element={<AddIntervention />} />
           <Route path="/technicien" element={<Technicien/>} />
+          <Route exact path="/addtech" element={<Addtech />} />
+          <Route path="/reclamation" element={<Réclamation />} />
+
         </Routes>
       </Sidebar>
     </>

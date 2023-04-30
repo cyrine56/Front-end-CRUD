@@ -32,7 +32,7 @@ const Sidebar = ({children}) => {
         },
         {
             path:"/coord/equipement",
-            name:"Equiepements",
+            name:"Equipements",
             icon:<FaServer/>
         },
         {

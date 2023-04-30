@@ -14,12 +14,12 @@ export default function AddIntervention() {
     technicien: "",
     dateDebut: "",
     heureDebut: "",
-    dateFIN: "",
+    dateFin: "",
     heureFin: "",
     numFiche: "",
   });
 
-  const { date, heure, client  ,modelMachine ,panne ,technicien ,dateDebut , heureDebut ,dateFIN ,heureFin ,numFiche , } = Intervention;
+  const { date, heure, client  ,modelMachine ,panne ,technicien ,dateDebut , heureDebut ,dateFin ,heureFin ,numFiche , } = Intervention;
 
   const onInputChange = (e) => {
     setIntervention({ ...Intervention, [e.target.name]: e.target.value });
@@ -27,15 +27,15 @@ export default function AddIntervention() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/Interv", Intervention);
-    navigate("/dash/interv");//c'est pour nous diriger vers la page afficher equipement si le nouv equ est ajouté avec succée
+    await axios.post("http://localhost:8080/interv", Intervention);
+    navigate("/coord/interv");//c'est pour nous diriger vers la page afficher equipement si le nouv equ est ajouté avec succée
   };
 
   return (
       <div className="container-fluid">
       <div className="row">
         <div className="col-md-8 offset-md-3 border rounded p-4  mt-1 shadow">
-          <h2 className="text-center m-2">Ajouter une nouvelle intervention</h2>
+          <h2 className="text-center mb-2">Ajouter une nouvelle intervention</h2>
 
           <form onSubmit={(e) => onSubmit(e)}>
   <div className="mb- row">
@@ -44,7 +44,7 @@ export default function AddIntervention() {
     </label>
     <div className="col-sm-9">
       <input
-        type={"text"}
+        type={"date"}
         className="form-control"
         placeholder="saisir la date"
         name="date"
@@ -121,7 +121,7 @@ export default function AddIntervention() {
   </label>
   <div className="col-sm-9">
     <input
-      type={"date"} /* Modifier le type de l'input à "date" */
+      type={"text"} /* Modifier le type de l'input à "date" */
       className="form-control"
       placeholder="saisir le technicien"
       name="technicien"
@@ -162,144 +162,49 @@ export default function AddIntervention() {
   </div>
   <div className="mb-1 row">
     <label htmlFor="Email" className="col-sm-3 col-form-label">
-    dateFIN
+    date Fin
     </label>
     <div className="col-sm-9">
       <input
-        type={"text"}
+        type={"date"}
         className="form-control"
         placeholder="Saaisir le dateFIN"
-        name="dateFIN"
-        value={dateFIN}
+        name="dateFin"
+        value={dateFin}
         onChange={(e) => onInputChange(e)}
       />
     </div>
   </div>
   <div className="mb-1 row">
     <label htmlFor="Email" className="col-sm-3 col-form-label">
-      Model écran
+      Heure fin
     </label>
     <div className="col-sm-9">
       <input
         type={"text"}
         className="form-control"
         placeholder="Saisir le model écran"
-        name="modelEcran"
-        value={modelEcran}
+        name="heureFin"
+        value={heureFin}
         onChange={(e) => onInputChange(e)}
       />
     </div>
   </div>
   <div className="mb-1 row">
     <label htmlFor="Email" className="col-sm-3 col-form-label">
-      os
+      Numéro fiche
     </label>
     <div className="col-sm-9">
       <input
         type={"text"}
         className="form-control"
-        placeholder="Saisir l'os"
-        name="os"
-        value={os}
+        placeholder="Saisir le mnuméro de fiche"
+        name="numFiche"
+        value={numFiche}
         onChange={(e) => onInputChange(e)}
       />
     </div>
-    
   </div>
-  <div className="mb-1 row">
-    <label htmlFor="Email" className="col-sm-3 col-form-label">
-    Paramétre réseau
-    </label>
-    <div className="col-sm-9">
-      <input
-        type={"text"}
-        className="form-control"
-        placeholder="Saisir les paramétre réseau"
-        name="paramReseau"
-        value={paramReseau}
-        onChange={(e) => onInputChange(e)}
-      />
-    </div>
-    
-  </div>
-  <div className="mb-1 row">
-    <label htmlFor="Email" className="col-sm-3 col-form-label">
-    technicien
-    </label>
-    <div className="col-sm-9">
-      <input
-        type={"text"}
-        className="form-control"
-        placeholder="Saisir le nom du technicien"
-        name="tech"
-        value={tech}
-        onChange={(e) => onInputChange(e)}
-      />
-    </div>
-    
-  </div>
-  <div className="mb-1 row">
-    <label htmlFor="Email" className="col-sm-3 col-form-label">
-    Numéro fiche 
-    </label>
-    <div className="col-sm-9">
-      <input
-        type={"text"}
-        className="form-control"
-        placeholder="Saisir le numéro de la fiche "
-        name="fiche"
-        value={fiche}
-        onChange={(e) => onInputChange(e)}
-      />
-    </div>
-    
-  </div>
-  <div className="mb-1 row">
-    <label htmlFor="Email" className="col-sm-3 col-form-label">
-    observation
-    </label>
-    <div className="col-sm-9">
-      <input
-        type={"text"}
-        className="form-control"
-        placeholder="Saisir l'observation"
-        name="observation"
-        value={observation}
-        onChange={(e) => onInputChange(e)}
-      />
-    </div>
-    
-  </div>
-  <div className="mb-1 row">
-    <label htmlFor="Email" className="col-sm-3 col-form-label">
-    etat
-    </label>
-    <div className="col-sm-9">
-      <input
-        type={"text"}
-        className="form-control"
-        placeholder="Saisir l'état de l'équipement"
-        name="etat"
-        value={etat}
-        onChange={(e) => onInputChange(e)}
-      />
-    </div>
-    
-  </div>
-  <div className="mb-1 row">
-  <label htmlFor="Email" className="col-sm-3 col-form-label">
-  Réception
-  </label>
-  <div className="col-sm-9">
-    <input
-      type={"date"} /* Modifier le type de l'input à "date" */
-      className="form-control"
-      name="dateReception"
-      value={dateReception}
-      onChange={(e) => onInputChange(e)}
-    />
-  </div>
-</div>
 
   <div className="mb-1">
     <button type="submit" className="btn btn-outline-primary">

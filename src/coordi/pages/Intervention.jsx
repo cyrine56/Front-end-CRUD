@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
   const [users, setUsers] = useState([]);
@@ -26,6 +27,9 @@ export default function Home() {
   return (
     <div >
           <h1 className="text-center">Interventions</h1>
+          <Link className="btn btn-outline-dark m-2" to="/coord/addinterv">
+            Ajouter une nouvelle intervention
+          </Link>
       <div >
         <table className="table table-xss border shadow small m-5">
           <thead>
@@ -63,24 +67,15 @@ export default function Home() {
                 <td>{Interv.numFiche}</td>
           
                 <td>
-                  <Link
-                    className="btn btn-primary mt-2"
-                    to={`/dash/viewequ${Interv.id}`}
-                  >
-                    Voir
-                  </Link>
-                  <Link
-                    className="btn btn-outline-primary mt-2"
-                    to={`/dash/editequ`}
-                  >
-                    Editer
-                  </Link>
-                  <button
-                    className="btn btn-danger mt-2"
-                    onClick={() => deleteUser(Interv.id)}
-                  >
-                    Supprimer
-                  </button>
+
+                <button className="btn btn-success m-2" onClick={() => deleteUser(Interv.id)}>
+  <FontAwesomeIcon icon={faEdit} className="text-white" />
+</button>
+
+
+                  <button className="btn btn-danger m-2 " onClick={() => deleteUser(Interv.id)}>
+  <FontAwesomeIcon icon={faTrashAlt} className="text-white" />
+</button>
                 </td>
               </tr>
             ))}
