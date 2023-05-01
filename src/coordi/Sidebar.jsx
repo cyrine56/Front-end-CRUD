@@ -3,13 +3,9 @@ import {
     FaTh,
     FaBars,
     FaUserAlt,
-    FaRegChartBar,
-    FaCommentAlt,
-    FaExclamationCircle,
-    FaShoppingBag,
+
     FaBell,
-    FaServer,
-    FaThList
+    FaServer
 }from "react-icons/fa";
 import { MdBuild ,MdHomeRepairService,MdEngineering} from 'react-icons/md';
 import { GiVendingMachine } from 'react-icons/gi';
@@ -50,14 +46,20 @@ const Sidebar = ({children}) => {
             path:"/coord/interv",
             name:"Intervention",
             icon:<MdHomeRepairService/>
+        },
+        {
+            path:"/coord/rappoprt",
+            name:"Rapport",
+            icon:<MdHomeRepairService/>
         }
+        
     ]
     return (
         <div className="container-fluid custom-container">
             <div className="row">
                 <div style={{width: isOpen ? "200px" : "70px"}} className="col-5 sidebar">
                     <div className="top_section">
-                        <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Coord</h1>
+                    <p style={{display: isOpen ? "block" : "none", fontSize:"120%"}} className="logo">Coord</p>
                         <div style={{marginLeft: isOpen ? "60px" : "0px"}} className="bars">
                             <FaBars onClick={toggle}/>
                         </div>

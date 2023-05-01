@@ -7,6 +7,7 @@ import {
 import { Card, Space, Statistic, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
 import {  Tag } from 'antd';
+import { getReclam, getEquipment, getClient, getTechnicien } from "../../components/API";
 
 import {
   Chart as ChartJS,
@@ -30,85 +31,98 @@ ChartJS.register(
 );
 
 function Dashboard() {
-  const [orders, setOrders] = useState(0);
-  const [inventory, setInventory] = useState(0);
-  const [customers, setCustomers] = useState(0);
-  const [revenue, setRevenue] = useState(0);
+  const [technicien, setTechnicien] = useState(0); //manquante en backend 
+  const [client, setClient] = useState(0);
+  const [reclams, setReclam] = useState(0);
+  const [equipement, setEquipment] = useState(0);
 
- 
+  useEffect(() => {
+    getReclam().then((res) => {
+      setReclam(res);
+      console.log(res);
+    });
+    getEquipment().then((res) => {
+      setEquipment(res);
+      console.log(res);
+    });
+    getClient().then((res) => {
+      setClient(res);
+      console.log(res);
+    });
+  }, []);
 
   return (
     <Space size={20} direction="vertical" className="container p-5 text-center">
         <h1 className="text-center">Service manager</h1>
       <Space direction="horizental">
       <DashboardCard
-  icon={
-    <ShoppingCartOutlined
-      style={{
-        color: "green",
-        backgroundColor: "black",
-        borderRadius: 20,
-        fontSize: 24,
-        padding: 8,
-      }}
-    />
-  }
-  title={"Réclamation"}
-  value={orders}
-/>
-<DashboardCard
-  icon={
-    <ToolOutlined
-      style={{
-        color: "blue",
-        backgroundColor: "black",
-        borderRadius: 20,
-        fontSize: 24,
-        padding: 8,
-      }}
-    />
-  }
-  title={"Technicien"}
-  value={inventory}
-/>
-<DashboardCard
-  icon={
-    <UserOutlined
-      style={{
-        color: "purple",
-        backgroundColor: "black",
-        borderRadius: 20,
-        fontSize: 24,
-        padding: 8,
-      }}
-    />
-  }
-  title={"Client"}
-  value={customers}
-/>
-<DashboardCard
-  icon={
-    <ToolOutlined
-      style={{
-        color: "gray",
-        backgroundColor: "black",
-        borderRadius: 20,
-        fontSize: 24,
-        padding: 8,
-      }}
-    />
-  }
-  title={"Equipement"}
-  value={revenue}
-/>
+    icon={
+      <ShoppingCartOutlined
+        style={{
+          color: "green",
+          backgroundColor: "black",
+          borderRadius: 20,
+          fontSize: 24,
+          padding: 8,
+        }}
+      />
+    }
+    title={"Réclamation"}
+    value={reclams}
+  />
+  <DashboardCard
+    icon={
+      <ToolOutlined
+        style={{
+          color: "blue",
+          backgroundColor: "black",
+          borderRadius: 20,
+          fontSize: 24,
+          padding: 8,
+        }}
+      />
+    }
+    title={"Technicien"}
+    value={technicien}
+  />
+  <DashboardCard
+    icon={
+      <UserOutlined
+        style={{
+          color: "purple",
+          backgroundColor: "black",
+          borderRadius: 20,
+          fontSize: 24,
+          padding: 8,
+        }}
+      />
+    }
+    title={"Client"}
+    value={client}
+  />
+  <DashboardCard
+    icon={
+      <ToolOutlined
+        style={{
+          color: "gray",
+          backgroundColor: "black",
+          borderRadius: 20,
+          fontSize: 24,
+          padding: 8,
+        }}
+      />
+    }
+    title={"Equipement"}
+    value={equipement}
+  />
+        </Space>
+        <Space>
+          <RecentOrders />
+          <DashboardChart />
+        </Space>
       </Space>
-      <Space>
-        <RecentOrders />
-        <DashboardChart />
-      </Space>
-    </Space>
-  );
-}
+    );
+  }
 
 function DashboardCard({ title, value, icon }) {
   return (

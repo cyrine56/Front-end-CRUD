@@ -35,7 +35,7 @@ const Sidebar = ({children}) => {
             icon:<WarningFilled/>
         },
         {
-            path:"/gest/rapports",
+            path:"/gest/rapp",
             name:"Rapports  ",
             icon:<TbReport />
 
@@ -56,7 +56,7 @@ const Sidebar = ({children}) => {
             <div className="row">
                 <div style={{width: isOpen ? "200px" : "70px"}} className="col-5 sidebar">
                     <div className="top_section">
-                        <h1 style={{display: isOpen ? "block" : "none"}} className="logo">Manager</h1>
+                        <p style={{display: isOpen ? "block" : "none", fontSize:"120%"}} className="logo">Manager</p>
                         <div style={{marginLeft: isOpen ? "60px" : "0px"}} className="bars">
                             <FaBars onClick={toggle}/>
                         </div>

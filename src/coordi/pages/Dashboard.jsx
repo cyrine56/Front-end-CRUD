@@ -155,10 +155,28 @@ import {
         title: "Numéro de réclamations traitées",
         dataIndex: "technicien",
       },
+      /** 
       {
         title: "Détails",
         dataIndex: "etat",
-      },
+        render: (text) => {
+          let color;
+          switch (text) {
+            case "En cours":
+              color = "red";
+              break;
+            case "Planifié":
+              color = "yellow";
+              break;
+            case "Clôturé":
+              color = "green";
+              break;
+            default:
+              color = "gray";
+          }
+          return <Tag color={color}>{text}</Tag>;
+        },
+      },**/
     ];
   
     return (

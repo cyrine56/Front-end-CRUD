@@ -71,6 +71,8 @@ const CoordRoutes = () => {
           <Route path="/technicien" element={<Technicien/>} />
           <Route exact path="/addtech" element={<Addtech />} />
           <Route path="/reclamation" element={<Réclamation />} />
+          <Route path="/rappoprt" element={<Report />} />
+
 
         </Routes>
       </Sidebar>
@@ -85,7 +87,7 @@ const ManagRoutes = () => {
             <Route path="/" element={<Dashboard2 />} />
             <Route path="/1" element={<Clients />} />
             <Route path="/alertes" element={<Alertes/>} />
-            <Route path="/rapports" element={<Report />} />
+            <Route path="/rapp" element={<Report />} />
             <Route path="/5" element={<Reclamation />} />
             <Route path="/4" element={<Technicien/>} />
           </Routes>
